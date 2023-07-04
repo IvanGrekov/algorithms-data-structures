@@ -1,0 +1,23 @@
+{
+    "include": ["./**/*"],
+    "exclude": ["node_modules"],
+    "compilerOptions": {
+        "target": "es2016",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "rootDir": ".",
+        "baseUrl": ".",
+        "outDir": "dist",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "skipLibCheck": true,
+        "noImplicitAny": true,
+        "allowSyntheticDefaultImports": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "allowJs": true,
+        "declarationMap": true,
+        "declaration": true
+    }
+}
