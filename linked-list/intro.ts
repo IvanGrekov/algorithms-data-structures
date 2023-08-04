@@ -144,7 +144,7 @@ export default class LinkedList {
     }
 
     public serialize(): Array<number | string> {
-        const result = [];
+        const result: Array<number | string> = [];
         let node = this.head;
 
         while (node) {

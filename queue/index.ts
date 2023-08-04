@@ -28,7 +28,7 @@ class Queue {
     }
 
     public getQueue(): any[] {
-        return this.list.toArray();
+        return this.list.serialize();
     }
 }
 

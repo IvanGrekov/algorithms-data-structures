@@ -1,5 +1,6 @@
 class Node {
     constructor(
+        public key: string,
         public value: any,
         public next: Node | null = null,
         public prev: Node | null = null,
@@ -15,8 +16,8 @@ class LinkedList {
         this.tail = null;
     }
 
-    public append(value: any): void {
-        const node = new Node(value);
+    public append(key: Node['key'], value: Node['value']): void {
+        const node = new Node(key, value);
 
         if (this.tail) {
             this.tail.next = node;
@@ -28,8 +29,8 @@ class LinkedList {
         }
     }
 
-    public prepend(value: any): void {
-        const node = new Node(value);
+    public prepend(key: Node['key'], value: Node['value']): void {
+        const node = new Node(key, value);
 
         if (this.head) {
             this.head.prev = node;
@@ -46,11 +47,11 @@ class LinkedList {
         this.tail = null;
     }
 
-    public delete(value: any): Node['value'] | null {
+    public delete(key: any): Node | null {
         let node = this.head;
 
         while (node) {
-            if (node.value === value) {
+            if (node.key === key) {
                 break;
             }
 
@@ -91,24 +92,24 @@ class LinkedList {
             }
         }
 
-        return node.value;
+        return node;
     }
 
-    public deleteHead(): Node['value'] | null {
+    public deleteHead(): Node | null {
         if (!this.head) {
             return null;
         }
 
-        const value = this.getHead()?.value;
+        const key = this.getHead()?.key;
 
-        return this.delete(value);
+        return this.delete(key);
     }
 
-    public find(value: any): Node | null {
+    public find(key: Node['key']): Node | null {
         let node = this.head;
 
         while (node) {
-            if (node.value === value) {
+            if (node.key === key) {
                 break;
             }
 
@@ -160,7 +161,20 @@ class LinkedList {
         let currentNode = this.head;
 
         while (currentNode) {
-            array.push(currentNode.value);
+            array.push({ key: currentNode.key, value: currentNode.value });
+            currentNode = currentNode.next;
+        }
+
+        return array;
+    }
+
+    public keys(): string[] {
+        const array: string[] = [];
+
+        let currentNode = this.head;
+
+        while (currentNode) {
+            array.push(currentNode.key);
             currentNode = currentNode.next;
         }
 
